@@ -33,7 +33,7 @@ class Chain {
 };
 
 
-std::vector<std::string> Fixes(std::string chain);
+std::vector<std::string> Affixes(std::string chain);
 
 
 #endif

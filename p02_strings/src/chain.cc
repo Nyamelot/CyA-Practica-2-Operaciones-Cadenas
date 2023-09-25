@@ -6,7 +6,7 @@
 
 #include "chain.h"
 
-std::vector<std::string> Fixes(std::string chain) {
+std::vector<std::string> Affixes(std::string chain) {
   std::string fix;
   std::vector<std::string> fixes;
   fixes.emplace_back("&");
@@ -30,7 +30,7 @@ void Chain::Length() {
 }
 
 void Chain::Prefix() {
-  std::vector<std::string>prefixes = Fixes(chain_);
+  std::vector<std::string>prefixes = Affixes(chain_);
   std::cout << "{ ";
   bool comma = true;
   for (const auto& chain : prefixes) {
@@ -40,5 +40,19 @@ void Chain::Prefix() {
     std::cout << chain;
     comma = false;
   }
-  std::cout << 
+  std::cout << "}" << std::endl;
+}
+
+void Chain::Suffix() {
+  std::vector<std::string>suffixes = Affixes(chain_);
+  std::cout << "{ ";
+  bool comma = true;
+  for (const auto& chain : suffixes) {
+    if (!comma) {
+      std::cout << ", ";
+    }
+    std::cout << chain;
+    comma = false;
+  }
+  std::cout << "}" << std::endl;
 }
