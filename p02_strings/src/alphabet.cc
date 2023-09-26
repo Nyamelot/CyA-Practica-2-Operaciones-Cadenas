@@ -11,8 +11,8 @@
 
 #include "alphabet.h"
 
-std::ostream& operator<<(std::ostream& out, Alphabet alphabet) {
-  out << "{ ";
+std::ostream& operator<<(std::ostream& out, const Alphabet& alphabet) {
+  out << "{";
   bool comma = true;
    for (const auto& symbol : alphabet.GetAlphabet()) {
      if (!comma) {
@@ -21,6 +21,6 @@ std::ostream& operator<<(std::ostream& out, Alphabet alphabet) {
      out << symbol;
      comma = false;
    }
-  out << "}" << std::endl;
+  out << "}";
   return out;
 }

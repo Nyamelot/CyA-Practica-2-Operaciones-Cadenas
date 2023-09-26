@@ -8,59 +8,62 @@
 // Fecha: 21/09/2023
 
 #include <iostream>
+#include <algorithm>
 #include <string>
 #include <set>
 #include <vector>
+#include <fstream>
 
 #include "chain.h"
 
-std::vector<std::string> Affixes(std::string chain) {
-  std::string fix;
-  std::vector<std::string> fixes;
-  fixes.emplace_back("&");
-  for (const auto& symbol : chain) {
-    fix.push_back(symbol);
-    fixes.emplace_back(fix);
+std::ostream& operator<<(std::ostream& out, const Chain& chain) {
+  if (chain.chain_.size() == 0) {
+    out << "&";
+    return out; 
   }
-  return fixes;
+  out << chain.chain_;
+  return out;
 }
 
 Chain Chain::Invert() {
-  std::string reverse;
-  for (int i = chain_.length(); i >= 0; i--) {
-    reverse.push_back(chain_[i]);
-  }
-  return Chain (reverse);
+  std::string reverse = chain_;
+  std::reverse(reverse.begin(), reverse.end());
+  return Chain(reverse);
 }
 
-void Chain::Length() {
-  std::cout << chain_.length() << std::endl;
+
+int Chain::Length() {
+  return chain_.length();
 }
 
-void Chain::Prefix() {
-  std::vector<std::string>prefixes = Affixes(chain_);
-  std::cout << "{ ";
-  bool comma = true;
-  for (const auto& chain : prefixes) {
-    if (!comma) {
-      std::cout << ", ";
-    }
-    std::cout << chain;
-    comma = false;
+
+std::vector<Chain> Chain::Prefix() {
+  std::string prefix;
+  std::vector<Chain> prefixes;
+  prefixes.emplace_back("");
+  for (const auto& symbol : chain_) {
+    prefix.push_back(symbol);
+    prefixes.emplace_back(prefix);
   }
-  std::cout << "}" << std::endl;
+  return prefixes;
 }
 
-void Chain::Suffix() {
-  std::vector<std::string>suffixes = Affixes(chain_);
-  std::cout << "{ ";
-  bool comma = true;
-  for (const auto& chain : suffixes) {
-    if (!comma) {
-      std::cout << ", ";
-    }
-    std::cout << chain;
-    comma = false;
+std::vector<Chain> Chain::Suffix() {
+  std::vector<Chain> suffixes;
+  suffixes.emplace_back("");
+  for (int i = chain_.size() - 1; i >= 0; i--) {
+    auto sub_string = chain_.substr(i);
+    suffixes.emplace_back(sub_string);
   }
-  std::cout << "}" << std::endl;
+  return suffixes;
+}
+
+std::vector<std::string> FileReader(std::ifstream& input_files) {
+  std::vector<std::string> text_file;
+  std::string text_line;
+  while (!input_files.eof()) {
+    std::getline(input_files, text_line);
+    text_file.emplace_back(text_line);
+  }
+  return text_file;
 }

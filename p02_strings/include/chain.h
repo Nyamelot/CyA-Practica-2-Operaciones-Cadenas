@@ -18,34 +18,28 @@
 
 class Chain {
  public:
-  //Constructor
+  // Constructor
   explicit Chain (const std::string& chain) : chain_(chain), alphabet_(chain) {}
 
-  //Getters
+  // Getters
   inline const Alphabet GetAlphabet() const { return alphabet_; }
-  inline const std::string GetString() const { return chain_; }
 
-  //Functions
-  void Prefix();
-  void Suffix();
+  // Functions
+  std::vector<Chain> Prefix();
+  std::vector<Chain> Suffix();
   Chain Invert();
-  void Length();
+  int Length();
 
-  //Operator Overloading
+  // Operator Overloading
   friend std::ostream& operator<<(std::ostream& out, const Chain& chain);
 
  private:
   Alphabet alphabet_;
   std::string chain_;
-
 };
 
 
-
-Chain operator+(const Chain& chain1, const Chain& chain2);
-std::vector<std::string> Affixes(std::string chain);
-
-
+std::vector<std::string> FileReader(std::ifstream& input_files);
 #endif
 
 
