@@ -41,6 +41,8 @@ class Chain {
 };
 
 
+
+Chain operator+(const Chain& chain1, const Chain& chain2);
 std::vector<std::string> Affixes(std::string chain);
 
 

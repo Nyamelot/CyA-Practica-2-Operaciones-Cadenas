@@ -14,5 +14,6 @@
 #include "chain.h"
 
 int main(int argc, char* argv[]) {
+  Usage(argc, argv);
   
 }

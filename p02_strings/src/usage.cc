@@ -24,7 +24,7 @@ const std::string kHelpText =
       - Length(Press 2): The output will result in the length of each chain
       - Reverse(Press 3): The output will result in reversed chains
       - Prefix(Press 4): The output will result in the prefix of each chain
-      - Suffix(Press 5): The output will result in the Suffix of each chain)";
+      - Suffix(Press 5): The output will result in the suffix of each chain)";
 
 void Usage(int argc, char* argv[]) {
   const std::string kHelp = "--help";
