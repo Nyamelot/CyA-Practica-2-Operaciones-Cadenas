@@ -1,3 +1,24 @@
+{a, b}
+5
+babba
+{&, a, ab, abb, abba, abbab}
 {&, b, ab, bab, bbab, abbab}
+
+{3, 6, 7, 8, 9}
+7
+6383976
+{&, 6, 67, 679, 6793, 67938, 679383, 6793836}
 {&, 6, 36, 836, 3836, 93836, 793836, 6793836}
+
+{a, h, l, o}
+4
+aloh
+{&, h, ho, hol, hola}
 {&, a, la, ola, hola}
+
+{a, b, c, d, i, l, m, o, p, t, u}
+14
+dadilibatupmoc
+{&, c, co, com, comp, compu, comput, computa, computab, computabi, computabil, computabili, computabilid, computabilida, computabilidad}
+{&, d, ad, dad, idad, lidad, ilidad, bilidad, abilidad, tabilidad, utabilidad, putabilidad, mputabilidad, omputabilidad, computabilidad}
+

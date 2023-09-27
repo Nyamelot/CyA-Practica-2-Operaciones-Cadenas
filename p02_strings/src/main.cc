@@ -84,8 +84,38 @@ int main(int argc, char* argv[]) {
         output_file << "}" << std::endl;
       }
       break;
+    case 6:
+      for (auto& chain : chains) {
+        output_file << chain.GetAlphabet() << std::endl;
+        output_file << chain.Length() << std::endl;
+        output_file << chain.Invert() << std::endl;
+        std::vector<Chain> prefixes = chain.Prefix();
+        output_file << "{";
+        bool comma1 = true;
+          for (const auto& chain : prefixes) {
+            if (!comma1) {
+              output_file << ", ";
+            }
+          output_file << chain;
+          comma1 = false;
+          }
+        output_file << "}" << std::endl;
+        std::vector<Chain> suffixes = chain.Suffix();
+        output_file << "{";
+        bool comma2 = true;
+          for (const auto& chain : suffixes) {
+            if (!comma2) {
+              output_file << ", ";
+            }
+            output_file << chain;
+            comma2 = false;
+          }
+        output_file << "}" << std::endl;
+        output_file << std::endl;
+      }
+      break;  
     default:
-      std::cerr << "Wrong opcode, try from (1-5)" << std::endl;
+      std::cerr << "Wrong opcode, try from (1-6)" << std::endl;
       break; 
   } 
   return 0;

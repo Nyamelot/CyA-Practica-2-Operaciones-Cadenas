@@ -63,6 +63,12 @@ std::vector<std::string> FileReader(std::ifstream& input_files) {
   std::string text_line;
   while (!input_files.eof()) {
     std::getline(input_files, text_line);
+    for (const auto& symbol : text_line) {
+      if (symbol == '&') {
+        std::cerr << "You cant input the empty chain (&)!" << std::endl;
+        exit(EXIT_FAILURE);
+      }
+    }
     text_file.emplace_back(text_line);
   }
   return text_file;
