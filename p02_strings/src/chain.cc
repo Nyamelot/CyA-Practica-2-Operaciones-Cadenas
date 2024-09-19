@@ -6,6 +6,8 @@
 // Autor: José Ángel Portillo García
 // Correo: alu0101568232@ull.edu.es
 // Fecha: 21/09/2023
+// 
+// Nyan del futuro estuvo aquí
 
 #include <iostream>
 #include <algorithm>
